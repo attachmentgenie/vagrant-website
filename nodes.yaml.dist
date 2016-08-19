@@ -1,0 +1,10 @@
+---
+- name: centos6
+  hostname: node1.example.vagrant
+  box: puppetlabs/centos-6.6-64-puppet
+  box_version: '1.0.1'
+  box_check_update: false
+  ip: 192.168.42.42
+  ports:
+    - guest: 22
+      host: 4242
