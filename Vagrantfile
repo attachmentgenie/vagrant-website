@@ -64,6 +64,14 @@ Vagrant.configure("2") do |config|
           srv.vm.network :forwarded_port, guest: port["guest"], host: port["host"]
         end
       end
+      srv.vm.provider "virtualbox" do |v|
+        if node["cpus"]
+          v.cpus   = node["cpus"]
+        end
+        if node["memory"]
+          v.memory = node["memory"]
+        end
+      end
       srv.vm.network :private_network, ip: node["ip"]
       if node["synced_folders"]
         node["synced_folders"].each do |folder|
