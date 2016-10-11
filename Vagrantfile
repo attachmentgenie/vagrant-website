@@ -28,6 +28,11 @@ Vagrant.configure("2") do |config|
   end
 
   ###############################################################################
+  # Global provisioning settings                                                #
+  ###############################################################################
+    env = 'production'
+
+  ###############################################################################
   # Global VirtualBox settings                                                  #
   ###############################################################################
   config.vm.provider 'virtualbox' do |v|
@@ -73,19 +78,20 @@ Vagrant.configure("2") do |config|
         end
       end
       srv.vm.network :private_network, ip: node["ip"]
+      if node["aliases"]
+        srv.hostmanager.aliases = node["aliases"]
+      end
       if node["synced_folders"]
         node["synced_folders"].each do |folder|
           srv.vm.synced_folder folder["src"], folder["dst"]
         end
       end
-      srv.vm.synced_folder 'manifests/', "/etc/puppet/environments/production/manifests"
-      srv.vm.synced_folder 'modules/', "/etc/puppet/environments/production/modules"
-      srv.vm.synced_folder 'hiera/', '/var/lib/hiera'
+      srv.vm.synced_folder "#{env}/hieradata", "/etc/puppetlabs/code/environments/#{env}/hieradata"
+      srv.vm.provision "shell", inline: "wget -O - https://raw.githubusercontent.com/petems/puppet-install-shell/master/install_puppet_agent.sh | sudo sh"
       srv.vm.provision :puppet do |puppet|
-        puppet.manifests_path    = "manifests"
-        puppet.manifest_file     = ""
-        puppet.module_path       = "modules"
-        puppet.hiera_config_path = "files/hiera.yaml"
+        puppet.environment = "#{env}"
+        puppet.environment_path = "."
+        puppet.hiera_config_path = "#{env}/hiera.yaml"
       end
     end
   end
