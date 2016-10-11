@@ -27,6 +27,10 @@ Vagrant.configure("2") do |config|
     config.cache.scope = :machine
   end
 
+  if Vagrant.has_plugin?("vagrant-puppet-install")
+    config.puppet_install.puppet_version = :latest
+  end
+  
   ###############################################################################
   # Global provisioning settings                                                #
   ###############################################################################
@@ -87,7 +91,6 @@ Vagrant.configure("2") do |config|
         end
       end
       srv.vm.synced_folder "#{env}/hieradata", "/etc/puppetlabs/code/environments/#{env}/hieradata"
-      srv.vm.provision "shell", inline: "wget -O - https://raw.githubusercontent.com/petems/puppet-install-shell/master/install_puppet_agent.sh | sudo sh"
       srv.vm.provision :puppet do |puppet|
         puppet.environment = "#{env}"
         puppet.environment_path = "."

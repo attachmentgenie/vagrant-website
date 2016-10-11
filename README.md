@@ -3,11 +3,12 @@
 vagrant starter kit 
 
 ## Requirements
-    Virtualbox                  => https://www.virtualbox.org
-    Vagrant                     => http://www.vagrantup.com
-    vagrant-hostmanager         => vagrant plugin install vagrant-hostmanager
-    vagrant-cachier  (optional) => vagrant plugin install vagrant-cachier
-    vagrant-triggers (optional) => vagrant plugin install vagrant-triggers
+    Virtualbox                        => https://www.virtualbox.org
+    Vagrant                           => http://www.vagrantup.com
+    vagrant-hostmanager               => vagrant plugin install vagrant-hostmanager
+    vagrant-cachier  (optional)       => vagrant plugin install vagrant-cachier
+    vagrant-puppet-install (optional) => vagrant plugin install vagrant-puppet-install
+    vagrant-triggers (optional)       => vagrant plugin install vagrant-triggers
     
 ## Preparation
     git submodule update --init
@@ -35,10 +36,9 @@ the puppet master deploys a fairly default hiera.yaml
 
 ### Manifests
 
-Place your own manifests in this directory. A fairly standard default.pp is already present which also creates and registers
-a local yum repository called 'localhost'
+Place your own manifests in this directory. A fairly standard default.pp is already present.
 
 ### Modules
 
-Place your own modules in this directory. 5 modules are alreayd present one of which is stdlib.
+Place your own modules in this directory. 5 modules are already present one of which is stdlib.
 
