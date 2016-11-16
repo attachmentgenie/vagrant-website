@@ -20,12 +20,6 @@ Vagrant.configure("2") do |config|
     config.cache.scope = :machine
   end
   
-  if Vagrant.has_plugin?("vagrant-proxyconf")
-    config.proxy.http     = "http://packer.paas.intranet:3128/"
-    config.proxy.https    = "http://packer.paas.intranet:3128/"
-    config.proxy.no_proxy = "localhost, 127.0.0.0/8, ::1, .vagrant, .intranet, .ing.net"
-  end
-
   if Vagrant.has_plugin?("vagrant-puppet-install")
     config.puppet_install.puppet_version = :latest
   end
