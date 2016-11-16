@@ -3,16 +3,6 @@
 
 Vagrant.configure("2") do |config|
   ###############################################################################
-  # Global Node list                                                            #
-  ###############################################################################
-  require 'yaml'
-  if File.file?('nodes.yaml')
-    nodes = YAML.load_file('nodes.yaml')
-  elsif File.file?('nodes.yaml.dist')
-    nodes = YAML.load_file('nodes.yaml.dist')
-  end
-
-  ###############################################################################
   # Global plugin settings                                                      #
   ###############################################################################
   plugins = ["vagrant-hostmanager"]
@@ -21,20 +11,29 @@ Vagrant.configure("2") do |config|
       raise plugin << " has not been installed."
     end
   end
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
 
-  # Configure cached packages to be shared between instances of the same base box.
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :machine
+  end
+  
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = "http://packer.paas.intranet:3128/"
+    config.proxy.https    = "http://packer.paas.intranet:3128/"
+    config.proxy.no_proxy = "localhost, 127.0.0.0/8, ::1, .vagrant, .intranet, .ing.net"
   end
 
   if Vagrant.has_plugin?("vagrant-puppet-install")
     config.puppet_install.puppet_version = :latest
   end
-  
+
   ###############################################################################
   # Global provisioning settings                                                #
   ###############################################################################
-    env = 'production'
+  env = 'production'
 
   ###############################################################################
   # Global VirtualBox settings                                                  #
@@ -42,21 +41,20 @@ Vagrant.configure("2") do |config|
   config.vm.provider 'virtualbox' do |v|
   v.customize [
     'modifyvm', :id,
-    '--groups', '/Vagrant/example'
+    '--groups', '/Vagrant/kafka'
   ]
   end
 
   ###############################################################################
-  # Global /etc/hosts file settings                                             #
-  ###############################################################################
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
-  config.hostmanager.ignore_private_ip = false
-  config.hostmanager.include_offline = true
-
-  ###############################################################################
   # VM definitions                                                              #
   ###############################################################################
+  require 'yaml'
+  if File.file?('nodes.yaml')
+    nodes = YAML.load_file('nodes.yaml')
+  elsif File.file?('nodes.yaml.dist')
+    nodes = YAML.load_file('nodes.yaml.dist')
+  end
+
   config.vm.synced_folder ".", "/vagrant", disabled: true
   nodes.each do |node|
     config.vm.define node["name"] do |srv|
