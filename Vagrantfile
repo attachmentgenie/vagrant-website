@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider 'virtualbox' do |v|
   v.customize [
     'modifyvm', :id,
-    '--groups', '/Vagrant/kafka'
+    '--groups', '/Vagrant/example'
   ]
   end
 
