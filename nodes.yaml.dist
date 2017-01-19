@@ -1,8 +1,0 @@
----
-- name: centos7
-  hostname: node1.example.vagrant
-  box: bento/centos-7.2
-  ip: 192.168.42.42
-  ports:
-    - guest: 22
-      host: 4242

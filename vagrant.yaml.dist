@@ -1,0 +1,15 @@
+---
+
+nodes:
+    - name: centos7
+      hostname: node1.example.vagrant
+      box: bento/centos-7.2
+      ip: 192.168.42.42
+      ports:
+        - guest: 22
+          host: 4242
+puppet_environment: production
+puppet_version: :latest
+required_plugins:
+    - vagrant-hostmanager
+virtualbox_group: '/Vagrant/example'
