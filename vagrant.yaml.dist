@@ -1,5 +1,4 @@
 ---
-
 nodes:
     - name: centos7
       hostname: node1.example.vagrant
@@ -8,8 +7,4 @@ nodes:
       ports:
         - guest: 22
           host: 4242
-puppet_environment: production
-puppet_version: :latest
-required_plugins:
-    - vagrant-hostmanager
 virtualbox_group: '/Vagrant/example'
