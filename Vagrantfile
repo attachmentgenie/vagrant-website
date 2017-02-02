@@ -117,11 +117,38 @@ Vagrant.configure("2") do |config|
             srv.vm.synced_folder folder["src"], folder["dst"]
           end
         end
-        srv.vm.synced_folder "#{environment}/hieradata", "/etc/puppetlabs/code/environments/#{environment}/hieradata"
-        srv.vm.provision :puppet do |puppet|
-          puppet.environment = "#{environment}"
-          puppet.environment_path = "."
-          puppet.hiera_config_path = "#{environment}/hiera.yaml"
+        case node["provision_type"]
+        when 'puppet_agent'
+          srv.vm.provision "puppet_server" do |puppet|
+            puppet.options       = "-t --environment #{environment}"
+            if node["puppetmaster"]
+              puppet.puppet_server = node["puppetmaster"]
+            else
+              puppet.puppet_server = "puppetmaster.#{environment}.vagrant"
+            end
+          end
+        else
+          if node["hiera_path"]
+            srv.vm.synced_folder node["hiera_path"], "/etc/puppetlabs/code/environments/#{environment}/hieradata"
+          else
+            srv.vm.synced_folder "#{environment}/hieradata", "/etc/puppetlabs/code/environments/#{environment}/hieradata"
+          end
+          srv.vm.provision :puppet do |puppet|
+            puppet.environment = "#{environment}"
+            if node["environment_path"]
+              puppet.environment_path = node["environment_path"]
+            else
+              puppet.environment_path = "."
+            end
+            if node["hiera_config_path"]
+              puppet.hiera_config_path = node["hiera_config_path"]
+            else
+              puppet.hiera_config_path = "#{environment}/hiera.yaml"
+            end
+          end
+        end
+        if node["provision_shell"]
+          srv.vm.provision :shell, inline: node["provision_shell"]
         end
       end
     end
