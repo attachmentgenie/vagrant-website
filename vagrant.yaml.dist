@@ -1,10 +1,27 @@
 ---
 nodes:
-    - name: centos7
-      hostname: node1.example.vagrant
-      box: bento/centos-7.3
+    - name: centos6
+      hostname: centos6.example.vagrant
+      box: bento/centos-6.9
       ip: 192.168.42.42
-      ports:
-        - guest: 22
-          host: 4242
+    - name: centos7
+      hostname: centos7.example.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.42.43
+    - name: debian7
+      hostname: debian.example.vagrant
+      box: bento/debian-7.11
+      ip: 192.168.42.44
+    - name: debian8
+      hostname: debian.example.vagrant
+      box: bento/debian-8.8
+      ip: 192.168.42.45
+    - name: ubuntu1404
+      hostname: ubuntu1404.example.vagrant
+      box: bento/ubuntu-14.04
+      ip: 192.168.42.46
+    - name: ubuntu1604
+      hostname: ubuntu1604.example.vagrant
+      box: bento/ubuntu-16.04
+      ip: 192.168.42.47
 virtualbox_group: '/Vagrant/example'
