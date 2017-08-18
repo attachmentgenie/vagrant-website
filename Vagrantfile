@@ -48,12 +48,12 @@ Vagrant.configure("2") do |config|
     environment = 'production'
   end
 
-  if vagrant_config['puppet_version']
-    version = vagrant_config['puppet_version']
-  else
-    version = :latest
-  end
   if Vagrant.has_plugin?("vagrant-puppet-install")
+    if vagrant_config['puppet_version']
+      version = vagrant_config['puppet_version']
+    else
+      version = :latest
+    end
     config.puppet_install.puppet_version = version
   end
 
