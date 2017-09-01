@@ -1,15 +1,15 @@
 ---
 nodes:
     - name: puppet
-      hostname: puppet.proxy.vagrant
+      hostname: puppet.website.vagrant
       box: bento/centos-7.3
       ip: 192.168.49.42
     - name: frontend
-      hostname: frontend.proxy.vagrant
+      hostname: frontend.website.vagrant
       box: bento/centos-7.3
       ip: 192.168.49.43
     - name: backend
-      hostname: backend.proxy.vagrant
+      hostname: backend.website.vagrant
       box: bento/centos-7.3
       ip: 192.168.49.44
-virtualbox_group: '/Vagrant/proxy'
+virtualbox_group: '/Vagrant/website'
