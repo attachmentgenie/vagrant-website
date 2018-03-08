@@ -2,10 +2,12 @@
 # vi: set ft=ruby :
 
 require 'yaml'
-if File.file?('vagrant.yaml')
-  vagrant_config = YAML.load_file('vagrant.yaml')
-elsif File.file?('vagrant.yaml.dist')
-  vagrant_config = YAML.load_file('vagrant.yaml.dist')
+
+vagrant_root = File.expand_path(File.dirname(__FILE__))
+if File.file?(vagrant_root + '/vagrant.yaml')
+  vagrant_config = YAML.load_file(vagrant_root + '/vagrant.yaml')
+elsif File.file?(vagrant_root + '/vagrant.yaml.dist')
+  vagrant_config = YAML.load_file(vagrant_root + '/vagrant.yaml.dist')
 else
   raise "No vagrant config is provided."
 end
