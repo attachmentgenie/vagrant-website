@@ -1,0 +1,6 @@
+---
+profiles::bootstrap::repositories::remi: true
+profiles::runtime::php: true
+profiles::runtime::php::manage_repo: true
+profiles::runtime::php::version: '56'
+profiles::website::nginx: true

@@ -1,0 +1,4 @@
+---
+classes:
+ - roles::database
+profiles::database::mysql: true

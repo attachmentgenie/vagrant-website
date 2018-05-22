@@ -1,0 +1,20 @@
+---
+classes:
+  - roles::puppetmaster
+profiles::bootstrap::puppet::autosign: '/etc/puppetlabs/puppet/autosign.conf'
+profiles::bootstrap::puppet::autosign_domains:
+  - '*.website.vagrant'
+profiles::bootstrap::puppet::hiera_yaml_datadir: "/etc/puppetlabs/code/environments/production/hieradata"
+profiles::bootstrap::puppet::server: true
+profiles::bootstrap::puppet::server_external_nodes: ''
+profiles::bootstrap::puppet::server_puppetdb_host: puppet.website.vagrant
+profiles::bootstrap::puppet::server_storeconfigs_backend: 'puppetdb'
+profiles::database::postgresql: true
+profiles::database::postgresql::databases:
+  puppetdb:
+    user: puppetdb
+    password: puppetdb
+    grant: all
+profiles::database::postgresql::manage_repo: true
+profiles::puppet::puppetdb: true
+profiles::puppet::puppetmaster: true

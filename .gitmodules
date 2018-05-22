@@ -10,3 +10,36 @@
 [submodule "modules/firewall"]
 	path = production/modules/firewall
 	url = git@github.com:puppetlabs/puppetlabs-firewall.git
+[submodule "production/modules/php"]
+	path = production/modules/php
+	url = https://github.com/voxpupuli/puppet-php.git
+[submodule "production/modules/epel"]
+	path = production/modules/epel
+	url = https://github.com/stahnma/puppet-module-epel.git
+[submodule "production/modules/inifile"]
+	path = production/modules/inifile
+	url = https://github.com/puppetlabs/puppetlabs-inifile.git
+[submodule "production/modules/postgresql"]
+	path = production/modules/postgresql
+	url = https://github.com/puppetlabs/puppetlabs-postgresql.git
+[submodule "production/modules/concat"]
+	path = production/modules/concat
+	url = https://github.com/puppetlabs/puppetlabs-concat.git
+[submodule "production/modules/puppet"]
+	path = production/modules/puppet
+	url = https://github.com/theforeman/puppet-puppet.git
+[submodule "production/modules/hocon"]
+	path = production/modules/hocon
+	url = https://github.com/puppetlabs/puppetlabs-hocon.git
+[submodule "production/modules/puppet_authorization"]
+	path = production/modules/puppet_authorization
+	url = https://github.com/puppetlabs/puppetlabs-puppet_authorization.git
+[submodule "production/modules/puppetdb"]
+	path = production/modules/puppetdb
+	url = https://github.com/puppetlabs/puppetlabs-puppetdb.git
+[submodule "production/modules/nginx"]
+	path = production/modules/nginx
+	url = https://github.com/voxpupuli/puppet-nginx.git
+[submodule "production/modules/mysql"]
+	path = production/modules/mysql
+	url = https://github.com/puppetlabs/puppetlabs-mysql.git

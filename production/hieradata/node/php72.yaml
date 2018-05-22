@@ -1,0 +1,4 @@
+---
+profiles::bootstrap::repositories::remi: true
+profiles::runtime::php: true
+profiles::runtime::php::manage_repo: true

@@ -1,3 +1,11 @@
 ---
+classes:
+ - roles::website
 profiles::bootstrap::firewall: true
 profiles::bootstrap::firewall::ensure: stopped
+profiles::bootstrap::puppet: true
+profiles::bootstrap::puppet::puppetmaster: puppet.website.vagrant
+profiles::bootstrap::puppet::runinterval: 180
+profiles::bootstrap::puppet::splaylimit: 180s
+profiles::bootstrap::repos: true
+profiles::bootstrap::repositories::epel: true
