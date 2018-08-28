@@ -2,10 +2,28 @@
 classes:
  - roles::website
 profiles::bootstrap::firewall: true
-profiles::bootstrap::firewall::ensure: stopped
+profiles::bootstrap::firewall::purge: false
 profiles::bootstrap::puppet: true
 profiles::bootstrap::puppet::puppetmaster: puppet.website.vagrant
 profiles::bootstrap::puppet::runinterval: 180
 profiles::bootstrap::puppet::splaylimit: 180s
 profiles::bootstrap::repos: true
 profiles::bootstrap::repositories::epel: true
+profiles::bootstrap::ssh: true
+profiles::orchestration::consul: true
+profiles::orchestration::consul::config:
+  client_addr: '0.0.0.0'
+  data_dir: /opt/consul
+  datacenter: services
+  retry_join:
+    - 192.168.49.42
+profiles::orchestration::consul::searchpath:
+  - 'node.consul'
+  - 'query.services.consul'
+  - 'website.vagrant'
+profiles::orchestration::consul::name_servers:
+  - 127.0.0.1
+  - 10.0.2.3
+profiles::orchestration::consul::options: '-bind=%{::ipaddress_enp0s8} -enable-script-checks -syslog'
+profiles::orchestration::consul::resolv: true
+...

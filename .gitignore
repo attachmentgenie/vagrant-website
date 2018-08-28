@@ -1,2 +1,3 @@
-production/hiera.yaml.rpmnew
+production/*.rpmnew
 vagrant.yaml
+*.vdi

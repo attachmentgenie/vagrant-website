@@ -1,6 +1,24 @@
 ---
 profiles::bootstrap::repositories::remi: true
+profiles::orchestration::consul::services:
+  platform:
+    checks:
+    - http: http://localhost
+      interval: 10s
+    port: 80
+    tags:
+    - "traefik.enable=true"
 profiles::runtime::php: true
 profiles::runtime::php::manage_repo: true
 profiles::runtime::php::version: '56'
+profiles::website::apache: true
+profiles::website::apache::vhosts:
+  consul:
+    port: 8000
+    docroot: '/usr/share/nginx/html'
 profiles::website::nginx: true
+profiles::website::nginx::vhosts:
+  consul:
+    listen_port: 8020
+    www_root: '/usr/share/nginx/html'
+...

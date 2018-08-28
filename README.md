@@ -10,10 +10,17 @@ vagrant starter kit
     vagrant-cachier  (optional) => vagrant plugin install vagrant-cachier
     
 ## Preparation
+
     git submodule update --init
+    bundle install
     
 ## Setup
+
     vagrant up
 
-## TLDR
+## Inspec tests
 
+    bundle exec rake
+    bundle exec rake inspec[php72] 
+
+## TLDR

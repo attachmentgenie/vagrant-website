@@ -1,34 +1,47 @@
 ---
+required_plugins:
+    - vagrant-hostmanager
+    - vagrant-puppet-install
 nodes:
     - name: puppetmaster
       hostname: puppet.website.vagrant
-      box: bento/centos-7.4
+      box: bento/centos-7.5
       ip: 192.168.49.42
+      cpus: 2
+      memory: 4096
       synced_folders:
         - src: 'production'
           dst: '/etc/puppetlabs/code/environments/production'
     - name: proxy
       hostname: proxy.website.vagrant
-      box: bento/centos-7.4
+      aliases: platform.website.vagrant
+      box: bento/centos-7.5
       ip: 192.168.49.43
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
     - name: database
       hostname: db.website.vagrant
-      box: bento/centos-7.4
+      box: bento/centos-7.5
       ip: 192.168.49.44
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
+      disks:
+        - name: mysql
+          size: 1
+        - name: pgsql
+          size: 1
     - name: www
       hostname: www.website.vagrant
-      box: bento/centos-7.4
+      aliases: backend.website.vagrant
+      box: bento/centos-7.5
       ip: 192.168.49.45
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
     - name: php72
       hostname: php72.website.vagrant
-      box: bento/centos-7.4
+      box: bento/centos-7.5
       ip: 192.168.49.47
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
 virtualbox_group: '/Vagrant/website'
+...

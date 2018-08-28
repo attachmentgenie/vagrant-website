@@ -43,3 +43,39 @@
 [submodule "production/modules/mysql"]
 	path = production/modules/mysql
 	url = https://github.com/puppetlabs/puppetlabs-mysql.git
+[submodule "production/modules/consul"]
+	path = production/modules/consul
+	url = https://github.com/solarkennedy/puppet-consul.git
+[submodule "production/modules/archive"]
+	path = production/modules/archive
+	url = https://github.com/voxpupuli/puppet-archive.git
+[submodule "production/modules/systemd"]
+	path = production/modules/systemd
+	url = https://github.com/camptocamp/puppet-systemd.git
+[submodule "production/modules/dnsmasq"]
+	path = production/modules/dnsmasq
+	url = https://github.com/saz/puppet-dnsmasq.git
+[submodule "production/modules/resolve_conf"]
+	path = production/modules/resolv_conf
+	url = https://github.com/saz/puppet-resolv_conf.git
+[submodule "production/modules/ssh"]
+	path = production/modules/ssh
+	url = git@github.com:attachmentgenie/attachmentgenie-ssh.git
+[submodule "production/modules/traefik"]
+	path = production/modules/traefik
+	url = git@github.com:attachmentgenie/puppet-traefik.git
+[submodule "production/modules/puppetserver_gem"]
+	path = production/modules/puppetserver_gem
+	url = https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git
+[submodule "production/modules/apache"]
+	path = production/modules/apache
+	url = https://github.com/puppetlabs/puppetlabs-apache.git
+[submodule "production/modules/haproxy"]
+	path = production/modules/haproxy
+	url = https://github.com/puppetlabs/puppetlabs-haproxy.git
+[submodule "production/modules/lvm"]
+	path = production/modules/lvm
+	url = git@github.com:puppetlabs/puppetlabs-lvm.git
+[submodule "production/modules/compose"]
+	path = production/modules/composer
+	url = https://github.com/willdurand/puppet-composer.git

@@ -5,6 +5,7 @@ profiles::bootstrap::puppet::autosign: '/etc/puppetlabs/puppet/autosign.conf'
 profiles::bootstrap::puppet::autosign_domains:
   - '*.website.vagrant'
 profiles::bootstrap::puppet::hiera_yaml_datadir: "/etc/puppetlabs/code/environments/production/hieradata"
+profiles::bootstrap::puppet::install_toml: true
 profiles::bootstrap::puppet::server: true
 profiles::bootstrap::puppet::server_external_nodes: ''
 profiles::bootstrap::puppet::server_puppetdb_host: puppet.website.vagrant
@@ -16,5 +17,16 @@ profiles::database::postgresql::databases:
     password: puppetdb
     grant: all
 profiles::database::postgresql::manage_repo: true
+profiles::orchestration::consul::config:
+  bootstrap_expect: 1
+  client_addr: '%{::ipaddress_enp0s8}'
+  data_dir: /opt/consul
+  datacenter: services
+  server: true
+  ui: true
+profiles::orchestration::consul::options: '-bind=%{::ipaddress_enp0s8} -enable-script-checks -syslog'
+profiles::orchestration::consul::server: true
+profiles::orchestration::consul::ui: true
 profiles::puppet::puppetdb: true
 profiles::puppet::puppetmaster: true
+...
