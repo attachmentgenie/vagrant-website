@@ -21,11 +21,7 @@ Vagrant.configure("2") do |config|
   else
     plugins = ['vagrant-hostmanager', 'vagrant-puppet-install']
   end
-  plugins.each do |plugin|
-    unless Vagrant.has_plugin?(plugin)
-      raise plugin << " has not been installed."
-    end
-  end
+  config.vagrant.plugins = plugins
 
   ###############################################################################
   # Plugin settings                                                             #

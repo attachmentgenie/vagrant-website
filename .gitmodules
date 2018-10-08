@@ -79,3 +79,6 @@
 [submodule "production/modules/compose"]
 	path = production/modules/composer
 	url = https://github.com/willdurand/puppet-composer.git
+[submodule "production/modules/wget"]
+	path = production/modules/wget
+	url = https://github.com/voxpupuli/puppet-wget.git

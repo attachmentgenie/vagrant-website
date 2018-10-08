@@ -8,7 +8,7 @@ nodes:
       box: bento/centos-7.5
       ip: 192.168.49.42
       cpus: 2
-      memory: 4096
+      memory: 6144
       synced_folders:
         - src: 'production'
           dst: '/etc/puppetlabs/code/environments/production'
@@ -37,11 +37,18 @@ nodes:
       ip: 192.168.49.45
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
-    - name: php72
-      hostname: php72.website.vagrant
+      synced_folders:
+        - src: 'www'
+          dst: '/var/vhosts'
+    - name: fpm
+      hostname: fpm.website.vagrant
       box: bento/centos-7.5
       ip: 192.168.49.47
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
+      synced_folders:
+        - src: 'www'
+          dst: '/var/vhosts'
+puppet_version: 5.5.6
 virtualbox_group: '/Vagrant/website'
 ...

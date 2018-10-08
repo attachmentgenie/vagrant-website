@@ -19,12 +19,12 @@ profiles::database::postgresql::databases:
 profiles::database::postgresql::manage_repo: true
 profiles::orchestration::consul::config:
   bootstrap_expect: 1
-  client_addr: '%{::ipaddress_enp0s8}'
+  client_addr: '%{::ipaddress_eth1}'
   data_dir: /opt/consul
   datacenter: services
   server: true
   ui: true
-profiles::orchestration::consul::options: '-bind=%{::ipaddress_enp0s8} -enable-script-checks -syslog'
+profiles::orchestration::consul::options: '-bind=%{::ipaddress_eth1} -enable-script-checks -syslog'
 profiles::orchestration::consul::server: true
 profiles::orchestration::consul::ui: true
 profiles::puppet::puppetdb: true

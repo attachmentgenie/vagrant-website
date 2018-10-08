@@ -35,13 +35,13 @@ profiles::website::haproxy::listeners:
 profiles::website::haproxy::members:
   consul:
     listening_service: consul
-    server_names: 'www.website.vagrant'
+    server_names: 'platform.website.vagrant'
     ipaddresses: '192.168.49.45'
     ports: 80
     options: 'check'
   er:
     listening_service: er
-    server_names: 'www.website.vagrant'
+    server_names: 'platform.website.vagrant'
     ipaddresses: '192.168.49.45'
     ports: 80
     options: 'check'

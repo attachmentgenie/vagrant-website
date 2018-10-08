@@ -21,6 +21,27 @@ vagrant starter kit
 ## Inspec tests
 
     bundle exec rake
-    bundle exec rake inspec[php72] 
+    bundle exec rake inspec[proxy] 
 
 ## TLDR
+    
+    - name: puppetmaster
+    - name: proxy
+      public_vhosts:
+        - platform.website.vagrant:8030
+            Traefik using consul services to forward traffic to www node platform vhosts
+    - name: database
+    - name: www
+      php: 72
+      platform_vhosts
+        - backend.website.vagrant:8000
+          Apache vhost using php-fpm pool
+        - backend.website.vagrant:8020
+          Nginx vhost using php-fpm pool
+      public_vhosts:
+        - backend.website.vagrant:8001
+            Apache vhost using php-fpm pool on the fpm node
+        - backend.website.vagrant:8021
+            Nginx vhost using php-fpm pool on the fpm node
+    - name: fpm
+      php: 73
