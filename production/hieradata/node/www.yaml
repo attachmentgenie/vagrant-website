@@ -24,6 +24,8 @@ profiles::orchestration::consul::services:
     - "traefik.enable=true"
 profiles::runtime::php: true
 profiles::runtime::php::manage_repo: true
+profiles::runtime::php::fpm_pools:
+  www: {}
 profiles::website::apache: true
 profiles::website::apache::vhosts:
   platform.website.vagrant:
