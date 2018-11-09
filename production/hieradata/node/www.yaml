@@ -23,6 +23,7 @@ profiles::orchestration::consul::services:
     tags:
     - "traefik.enable=true"
 profiles::runtime::php: true
+profiles::runtime::php::install_composer: true
 profiles::runtime::php::manage_repo: true
 profiles::runtime::php::fpm_pools:
   www: {}
