@@ -18,14 +18,32 @@ profiles::database::postgresql::databases:
     grant: all
 profiles::database::postgresql::manage_repo: true
 profiles::orchestration::consul::config:
+  "addresses": {
+    "http": '127.0.0.1 %{::ipaddress_eth1}'
+  }
   bootstrap_expect: 1
-  client_addr: '%{::ipaddress_eth1}'
-  data_dir: /opt/consul
-  datacenter: services
   server: true
   ui: true
-profiles::orchestration::consul::options: '-bind=%{::ipaddress_eth1} -enable-script-checks -syslog'
 profiles::orchestration::consul::server: true
+profiles::orchestration::consul::services:
+  consul-ui:
+    checks:
+      - http: 'http://127.0.0.1:8500'
+        interval: 10s
+    port: 8500
+    tags:
+      - "consul"
+      - "sd"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:consul.traefik"
+      - "traefik.frontend.auth.basic=admin:$apr1$X3YoCPnq$HH/fha9lWqt.zPCmdbSL90"
+  puppet:
+    checks:
+      - tcp: '%{::ipaddress_eth1}:8140'
+        interval: 10s
+    port: 8140
+    tags:
+      - "puppet"
 profiles::orchestration::consul::ui: true
 profiles::puppet::puppetdb: true
 profiles::puppet::puppetmaster: true

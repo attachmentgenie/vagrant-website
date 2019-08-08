@@ -33,23 +33,25 @@ profiles::website::apache::vhosts:
     aliases:
       - backend.website.vagrant
     directories:
-    - path: '\.php$'
-      provider: 'filesmatch'
-      sethandler: 'proxy:fcgi://127.0.0.1:9000'
-    - path: '/var/vhosts'
-      options: ['Indexes','FollowSymLinks','MultiViews']
-      allow_override: ['All']
-    docroot: '/var/vhosts'
+      - path: '\.php$'
+        provider: 'filesmatch'
+        sethandler: 'proxy:fcgi://127.0.0.1:9000'
+      - path: '/var/www/sf3/web'
+        fallbackresource: '/app.php'
+        options: ['Indexes','FollowSymLinks','MultiViews']
+        allow_override: ['All']
+    docroot: '/var/www/sf3/web'
     port: 8000
   backend.website.vagrant:
     directories:
-    - path: '\.php$'
-      provider: 'filesmatch'
-      sethandler: 'proxy:fcgi://fpm.website.vagrant:9000'
-    - path: '/var/vhosts'
-      options: ['Indexes','FollowSymLinks','MultiViews']
-      allow_override: ['All']
-    docroot: '/var/vhosts'
+      - path: '\.php$'
+        provider: 'filesmatch'
+        sethandler: 'proxy:fcgi://127.0.0.1:9000'
+      - path: '/var/www/sf3/web'
+        fallbackresource: '/app.php'
+        options: ['Indexes','FollowSymLinks','MultiViews']
+        allow_override: ['All']
+    docroot: '/var/www/sf3/web'
     port: 8001
   d7.website.vagrant:
     directories:
