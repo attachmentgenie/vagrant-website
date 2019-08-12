@@ -1,4 +1,18 @@
 production/*.rpmnew
-vagrant.yaml
-*.vdi
 test/*/vendor/*
+test/*/inspec.lock
+test/*/profiles/*/inspec.lock
+vagrant.yaml
+*.rpmnew
+*.rpmsave
+*.vdi
+
+# Module directory
+.terraform/
+# Secrets files
+*.tfvars
+# State files
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
