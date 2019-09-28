@@ -130,7 +130,7 @@ Vagrant.configure("2") do |config|
 
           srv.trigger.after :destroy do |trigger|
             trigger.name = "Cleaning puppet certificate"
-            trigger.run = {inline: "vagrant ssh puppetmaster -c 'sudo /opt/puppetlabs/bin/puppet cert clean #{node["hostname"]}'"}
+            trigger.run = {inline: "vagrant ssh puppetmaster -c 'sudo /opt/puppetlabs/bin/puppetserver ca clean --certname #{node["hostname"]}'"}
           end
         else
           if node["hiera_path"]
