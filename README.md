@@ -1,6 +1,6 @@
-#  vagrant-example
+#  vagrant-website
 
-vagrant starter kit 
+A vagrant setup that creates scaling LAMP stacks.
 
 ## Requirements
     Virtualbox                  => https://www.virtualbox.org
@@ -21,9 +21,12 @@ vagrant starter kit
 ## Inspec tests
 
     bundle exec rake
-    bundle exec rake inspec[proxy] 
+    bundle exec rake inspec[centos7] 
 
 ## TLDR
+
+### (G)UI interfaces
+
     
     - name: puppetmaster
     - name: proxy
