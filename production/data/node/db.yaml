@@ -3,5 +3,5 @@ classes:
  - roles::database
 profiles::database::mysql: true
 profiles::database::postgresql: true
-profiles::database::postgresql::manage_repo: true
+profiles::database::postgresql::manage_package_repo: true
 ...

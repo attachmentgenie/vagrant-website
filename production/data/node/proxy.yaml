@@ -48,10 +48,10 @@ profiles::website::haproxy::members:
 profiles::website::nginx: true
 profiles::website::nginx::vhosts:
   consul:
-    listen_port: 8020
+    port: 8020
     www_root: '/usr/share/nginx/html'
   er:
-    listen_port: 8021
+    port: 8021
     www_root: '/usr/share/nginx/html'
-profiles::website::traefik: true
+profiles::website::traefik2: true
 ...

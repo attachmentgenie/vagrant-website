@@ -35,7 +35,7 @@ A vagrant setup that creates scaling LAMP stacks.
             Traefik using consul services to forward traffic to www node platform vhosts
     - name: database
     - name: www
-      php: 72
+      php: 74
       platform_vhosts
         - backend.website.vagrant:8000
           Apache vhost using php-fpm pool

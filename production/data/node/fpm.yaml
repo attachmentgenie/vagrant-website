@@ -5,5 +5,5 @@ profiles::runtime::php::fpm_pools:
   www:
     address: '%{::ipaddress_eth1}'
 profiles::runtime::php::manage_repo: true
-profiles::runtime::php::version: '72'
+profiles::runtime::php::version: '73'
 ...

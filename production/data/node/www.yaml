@@ -36,77 +36,36 @@ profiles::website::apache::vhosts:
       - path: '\.php$'
         provider: 'filesmatch'
         sethandler: 'proxy:fcgi://127.0.0.1:9000'
-      - path: '/var/www/sf3/web'
-        fallbackresource: '/app.php'
+      - path: '/var/vhosts'
+        fallbackresource: '/index.php'
         options: ['Indexes','FollowSymLinks','MultiViews']
         allow_override: ['All']
-    docroot: '/var/www/sf3/web'
+    docroot: '/var/vhosts'
     port: 8000
   backend.website.vagrant:
     directories:
       - path: '\.php$'
         provider: 'filesmatch'
-        sethandler: 'proxy:fcgi://127.0.0.1:9000'
-      - path: '/var/www/sf3/web'
-        fallbackresource: '/app.php'
+        sethandler: 'proxy:fcgi://fpm.website.vagrant:9000'
+      - path: '/var/vhosts'
+        fallbackresource: '/index.php'
         options: ['Indexes','FollowSymLinks','MultiViews']
         allow_override: ['All']
-    docroot: '/var/www/sf3/web'
+    docroot: '/var/vhosts'
     port: 8001
-  d7.website.vagrant:
-    directories:
-    - path: '\.php$'
-      provider: 'filesmatch'
-      sethandler: 'proxy:fcgi://127.0.0.1:9000'
-    - path: '/var/www/d7/public'
-      options: ['Indexes','FollowSymLinks','MultiViews']
-      allow_override: ['All']
-    docroot: '/var/www/d7'
-    port: 80
-  d8.website.vagrant:
-    directories:
-    - path: '\.php$'
-      provider: 'filesmatch'
-      sethandler: 'proxy:fcgi://127.0.0.1:9000'
-    - path: '/var/www/d8/public'
-      options: ['Indexes','FollowSymLinks','MultiViews']
-      allow_override: ['All']
-    docroot: '/var/www/d8'
-    port: 80
-  sf3.website.vagrant:
-    directories:
-    - path: '\.php$'
-      provider: 'filesmatch'
-      sethandler: 'proxy:fcgi://127.0.0.1:9000'
-    - path: '/var/www/sf3/web'
-      fallbackresource: '/app.php'
-      options: ['Indexes','FollowSymLinks','MultiViews']
-      allow_override: ['All']
-    docroot: '/var/www/sf3/web'
-    port: 80
-  sf4.website.vagrant:
-    directories:
-      - path: '\.php$'
-        provider: 'filesmatch'
-        sethandler: 'proxy:fcgi://127.0.0.1:9000'
-      - path: '/var/www/sf4/public'
-        options: ['Indexes','FollowSymLinks','MultiViews']
-        allow_override: ['All']
-    docroot: '/var/www/sf4/public'
-    port: 80
 profiles::website::nginx: true
 profiles::website::nginx::vhosts:
   platform.website.vagrant:
     fastcgi: '127.0.0.1:9000'
     fastcgi_index: 'index.php'
-    listen_port: 8020
-    server_name:
+    port: 8020
+    public_name:
       - backend.website.vagrant
       - platform.website.vagrant
     www_root: '/var/vhosts'
   backend.website.vagrant:
     fastcgi: 'fpm.website.vagrant:9000'
     fastcgi_index: 'index.php'
-    listen_port: 8021
+    port: 8021
     www_root: '/var/vhosts'
 ...

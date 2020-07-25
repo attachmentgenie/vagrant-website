@@ -61,9 +61,6 @@
 [submodule "production/modules/ssh"]
 	path = production/modules/ssh
 	url = git@github.com:attachmentgenie/attachmentgenie-ssh.git
-[submodule "production/modules/traefik"]
-	path = production/modules/traefik
-	url = git@github.com:attachmentgenie/puppet-traefik.git
 [submodule "production/modules/puppetserver_gem"]
 	path = production/modules/puppetserver_gem
 	url = https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git
@@ -82,3 +79,6 @@
 [submodule "production/modules/wget"]
 	path = production/modules/wget
 	url = https://github.com/voxpupuli/puppet-wget.git
+[submodule "production/modules/traefik2"]
+	path = production/modules/traefik2
+	url = git@github.com:attachmentgenie/attachmentgenie-traefik2.git
