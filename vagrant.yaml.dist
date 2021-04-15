@@ -5,7 +5,7 @@ required_plugins:
 nodes:
     - name: puppetmaster
       hostname: puppet.website.vagrant
-      box: bento/centos-7.8
+      box: bento/centos-7.9
       ip: 192.168.49.42
       cpus: 2
       memory: 6144
@@ -15,13 +15,13 @@ nodes:
     - name: proxy
       hostname: proxy.website.vagrant
       aliases: platform.website.vagrant
-      box: bento/centos-7.8
+      box: bento/centos-7.9
       ip: 192.168.49.43
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
     - name: database
       hostname: db.website.vagrant
-      box: bento/centos-7.8
+      box: bento/centos-7.9
       ip: 192.168.49.44
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
@@ -33,7 +33,7 @@ nodes:
     - name: www
       hostname: www.website.vagrant
       aliases: backend.website.vagrant
-      box: bento/centos-7.8
+      box: bento/centos-7.9
       ip: 192.168.49.45
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
@@ -42,12 +42,13 @@ nodes:
           dst: '/var/vhosts'
     - name: fpm
       hostname: fpm.website.vagrant
-      box: bento/centos-7.8
+      box: bento/centos-8.3
       ip: 192.168.49.47
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
       synced_folders:
         - src: 'www'
           dst: '/var/vhosts'
+puppet_version: 6.21.1
 virtualbox_group: '/Vagrant/website'
 ...
