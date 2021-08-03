@@ -97,7 +97,7 @@ Vagrant.configure("2") do |config|
           end
           if node["disks"]
             node["disks"].each_with_index do |disk, index|
-              medium_name = "#{node["name"]}_#{disk["name"]}.vdi"
+              medium_name = "disks/#{node["name"]}_#{disk["name"]}.vdi"
               unless File.exist?(medium_name)
                 v.customize ['createmedium', '--filename', medium_name, '--variant', 'Fixed', '--size', disk["size"] * 1024]
               end
