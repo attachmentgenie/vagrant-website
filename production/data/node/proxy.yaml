@@ -2,45 +2,25 @@
 profiles::bootstrap::firewall::entries:
   '200 allow Apache Consul':
     port: 8000
-  '200 allow Apache ER':
-    port: 8001
   '200 allow Haproxy Consul':
     port: 8010
-  '200 allow Haproxy ER':
-    port: 8011
   '200 allow Nginx Consul':
     port: 8020
-  '200 allow Nginx ER':
-    port: 8021
   '200 allow Traefik Consul':
     port: 8030
-  '200 allow Traefik ER':
-    port: 8031
 profiles::website::apache: true
 profiles::website::apache::vhosts:
   consul:
     port: 8000
-    docroot: '/usr/share/nginx/html'
-  er:
-    port: 8001
     docroot: '/usr/share/nginx/html'
 profiles::website::haproxy: true
 profiles::website::haproxy::listeners:
   consul:
     ipaddress: '0.0.0.0'
     ports: '8010'
-  er:
-    ipaddress: '0.0.0.0'
-    ports: '8011'
 profiles::website::haproxy::members:
   consul:
     listening_service: consul
-    server_names: 'platform.website.vagrant'
-    ipaddresses: '192.168.49.45'
-    ports: 80
-    options: 'check'
-  er:
-    listening_service: er
     server_names: 'platform.website.vagrant'
     ipaddresses: '192.168.49.45'
     ports: 80
@@ -49,9 +29,6 @@ profiles::website::nginx: true
 profiles::website::nginx::vhosts:
   consul:
     port: 8020
-    www_root: '/usr/share/nginx/html'
-  er:
-    port: 8021
     www_root: '/usr/share/nginx/html'
 profiles::website::traefik2: true
 ...

@@ -82,3 +82,6 @@
 [submodule "production/modules/traefik2"]
 	path = production/modules/traefik2
 	url = git@github.com:attachmentgenie/attachmentgenie-traefik2.git
+[submodule "production/modules/extlib"]
+	path = production/modules/extlib
+	url = https://github.com/voxpupuli/puppet-extlib.git

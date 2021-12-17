@@ -6,7 +6,7 @@ nodes:
     - name: puppetmaster
       hostname: puppet.website.vagrant
       box: bento/centos-7.9
-      ip: 192.168.49.42
+      ip: 192.168.56.42
       cpus: 2
       memory: 6144
       synced_folders:
@@ -16,13 +16,13 @@ nodes:
       hostname: proxy.website.vagrant
       aliases: platform.website.vagrant
       box: bento/centos-7.9
-      ip: 192.168.49.43
+      ip: 192.168.56.43
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
     - name: database
       hostname: db.website.vagrant
       box: bento/centos-7.9
-      ip: 192.168.49.44
+      ip: 192.168.56.44
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
       disks:
@@ -34,7 +34,7 @@ nodes:
       hostname: www.website.vagrant
       aliases: backend.website.vagrant
       box: bento/centos-7.9
-      ip: 192.168.49.45
+      ip: 192.168.56.45
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
       synced_folders:
@@ -43,12 +43,11 @@ nodes:
     - name: fpm
       hostname: fpm.website.vagrant
       box: bento/centos-8.3
-      ip: 192.168.49.47
+      ip: 192.168.56.47
       provision_type: puppet_agent
       puppetmaster: puppet.website.vagrant
       synced_folders:
         - src: 'www'
           dst: '/var/vhosts'
-puppet_version: 6.21.1
 virtualbox_group: '/Vagrant/website'
 ...
