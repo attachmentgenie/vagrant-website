@@ -5,6 +5,8 @@ hierarchy:
     path: "node/%{::hostname}.yaml"
   - name: "Environment"
     path: "environment/%{::environment}.yaml"
+  - name: "Versions"
+    path: "versions.yaml"
   - name: "Shared data"
     path: "common.yaml"
 defaults:
